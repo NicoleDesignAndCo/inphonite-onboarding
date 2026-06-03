@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inphonite — Onboarding</title>
+<meta name="viewport" content="width=1280">
+<link rel="stylesheet" href="design-system/colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<link rel="stylesheet" href="design-system/admin.css">
+<link rel="stylesheet" href="src/onboarding.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Tweakable defaults (not used yet but reserved for persistence) -->
+<script>
+const __INPHONITE_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "primary": "#594AE2"
+}/*EDITMODE-END*/;
+</script>
+
+<!-- Shared MudBlazor primitives -->
+<script type="text/babel" src="src/Components.jsx"></script>
+
+<!-- Tweaks panel (must come before app code that uses TweaksPanel) -->
+<script type="text/babel" src="src/tweaks-panel.jsx"></script>
+
+<!-- Prototype router + state -->
+<script type="text/babel" src="src/PrototypeRouter.jsx"></script>
+
+<!-- Screens -->
+<script type="text/babel" src="src/CenteredShell.jsx"></script>
+<script type="text/babel" src="src/Signup.jsx"></script>
+<script type="text/babel" src="src/OnboardingSurvey.jsx"></script>
+<script type="text/babel" src="src/PendingAppShell.jsx"></script>
+<script type="text/babel" src="src/PendingDashboard.jsx"></script>
+<script type="text/babel" src="src/SetupScreens.jsx"></script>
+<script type="text/babel" src="src/SendFirstMessage.jsx"></script>
+<script type="text/babel" src="src/FlowOverview.jsx"></script>
+<script type="text/babel" src="src/PrototypeTweaks.jsx"></script>
+
+<script type="text/babel">
+
+function App() {
+  const [route, go]             = useHashRoute("flow");
+  const [state, patch, reset]   = useDemoState();
+  const [snack, setSnack]       = React.useState({ open: false, msg: "" });
+  const notify = (msg) => setSnack({ open: true, msg });
+
+  // Survey navigation helpers ----
+  const completeSurvey = () => {
+    // Onboarding complete: business is the next required step
+    patch((s) => ({
+      setup: { ...s.setup, channels: "done" },
+    }));
+    go("dashboard");
+  };
+
+  // Decide which screen to render based on route ----
+  const onFlow = route === "flow";
+  const onCentered = (
+    route === "signup" || route.startsWith("survey")
+  );
+
+  const renderCenteredBody = () => {
+    if (route === "signup") return <Signup onContinue={() => go("survey/1")} />;
+    if (route === "survey/1") return (
+      <CenteredShell signedInAs="eleanor@cedarparkdental.com" onSignOut={() => go("signup")}
+                     screenLabel="02 Survey — Practice Info">
+        <SurveyStep1 state={state} patch={patch} onNext={() => go("survey/2")} />
+      </CenteredShell>
+    );
+    if (route === "survey/2") return (
+      <CenteredShell signedInAs="eleanor@cedarparkdental.com" onSignOut={() => go("signup")}
+                     screenLabel="03 Survey — Channels">
+        <SurveyStep2 state={state} patch={patch}
+                     onNext={() => go("survey/3")}
+                     onBack={() => go("survey/1")} />
+      </CenteredShell>
+    );
+    if (route === "survey/3") return (
+      <CenteredShell signedInAs="eleanor@cedarparkdental.com" onSignOut={() => go("signup")}
+                     screenLabel="04 Survey — Scheduling System">
+        <SurveyStep3 state={state} patch={patch}
+                     onComplete={completeSurvey}
+                     onBack={() => go("survey/2")} />
+      </CenteredShell>
+    );
+    return null;
+  };
+
+  // Body for routes that live inside the pending app shell
+  const renderAppBody = () => {
+    if (route === "dashboard")        return <PendingDashboard state={state} patch={patch} go={go} />;
+    if (route === "setup/business")   return <SetupBusiness state={state} patch={patch} go={go} />;
+    if (route === "setup/channels")   return <SetupChannels state={state} patch={patch} go={go} />;
+    if (route === "setup/tollfree")   return <SetupTollFree state={state} patch={patch} go={go} />;
+    if (route === "setup/ehr")        return <SetupEHR state={state} patch={patch} go={go} />;
+    if (route === "setup/review")     return <SetupReview state={state} go={go} />;
+    if (route === "first-message" || route === "first-message/1") return <MsgStep1 state={state} patch={patch} go={go} />;
+    if (route === "first-message/2") return <MsgStep2 state={state} patch={patch} go={go} />;
+    if (route === "first-message/3") return <MsgStep3 state={state} patch={patch} go={go} />;
+    if (route === "first-message/4") return <MsgStep4 state={state} go={go} />;
+    return <PendingDashboard state={state} patch={patch} go={go} />;
+  };
+
+  return (
+    <>
+      {onFlow
+        ? <FlowOverview state={state} patch={patch} go={go} reset={reset} />
+        : onCentered
+        ? renderCenteredBody()
+        : (
+          <PendingAppShell route={route} go={go} state={state}
+            onContactSupport={() => notify("Support request sent. Our team will respond within 1 business day.")}>
+            {renderAppBody()}
+          </PendingAppShell>
+        )
+      }
+
+      <PrototypeTweaks state={state} patch={patch} reset={reset} go={go} route={route} />
+
+      <MudSnackbar open={snack.open} message={snack.msg}
+        action="Dismiss"
+        onAction={() => setSnack({ open: false, msg: "" })}
+        onClose={() => setSnack({ open: false, msg: "" })} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
