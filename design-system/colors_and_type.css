@@ -1,0 +1,327 @@
+/* =========================================================
+   Inphonite × MudBlazor Design System — Tokens
+   Light theme by default. Dark theme via :root[data-theme="dark"].
+   Built on the standard MudBlazor color theme + Material palette.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* ---------- Light theme (default) ---------- */
+:root {
+  /* Brand / theme palette — drives every component */
+  --mud-primary: rgb(89, 74, 226);          /* deep indigo */
+  --mud-primary-lighten: rgb(118, 106, 231);
+  --mud-primary-darken: rgb(62, 44, 221);
+  --mud-primary-hover: rgba(89, 74, 226, 0.06);
+  --mud-primary-text: rgb(255, 255, 255);
+
+  --mud-secondary: rgb(255, 64, 129);       /* pink */
+  --mud-secondary-lighten: rgb(255, 102, 153);
+  --mud-secondary-darken: rgb(255, 31, 105);
+  --mud-secondary-hover: rgba(255, 64, 129, 0.06);
+  --mud-secondary-text: rgb(255, 255, 255);
+
+  --mud-tertiary: rgb(30, 200, 165);        /* teal */
+  --mud-tertiary-lighten: rgb(42, 221, 187);
+  --mud-tertiary-darken: rgb(25, 169, 140);
+  --mud-tertiary-hover: rgba(30, 200, 165, 0.06);
+  --mud-tertiary-text: rgb(255, 255, 255);
+
+  --mud-info: rgb(33, 150, 243);
+  --mud-info-lighten: rgb(71, 167, 245);
+  --mud-info-darken: rgb(12, 128, 223);
+  --mud-info-hover: rgba(33, 150, 243, 0.06);
+  --mud-info-text: rgb(255, 255, 255);
+
+  --mud-success: rgb(0, 200, 83);
+  --mud-success-lighten: rgb(0, 235, 98);
+  --mud-success-darken: rgb(0, 163, 68);
+  --mud-success-hover: rgba(0, 200, 83, 0.06);
+  --mud-success-text: rgb(255, 255, 255);
+
+  --mud-warning: rgb(255, 152, 0);
+  --mud-warning-lighten: rgb(255, 167, 36);
+  --mud-warning-darken: rgb(214, 129, 0);
+  --mud-warning-hover: rgba(255, 152, 0, 0.06);
+  --mud-warning-text: rgb(255, 255, 255);
+
+  --mud-error: rgb(244, 67, 54);
+  --mud-error-lighten: rgb(246, 96, 85);
+  --mud-error-darken: rgb(242, 28, 13);
+  --mud-error-hover: rgba(244, 67, 54, 0.06);
+  --mud-error-text: rgb(255, 255, 255);
+
+  --mud-dark: rgb(66, 66, 66);
+  --mud-dark-lighten: rgb(87, 87, 87);
+  --mud-dark-darken: rgb(46, 46, 46);
+  --mud-dark-text: rgb(255, 255, 255);
+
+  /* Neutrals & surfaces */
+  --mud-black: rgb(39, 44, 52);
+  --mud-white: rgb(255, 255, 255);
+  --mud-surface: rgb(255, 255, 255);
+  --mud-background: rgb(255, 255, 255);
+  --mud-background-gray: rgb(245, 245, 245);
+  --mud-appbar-background: rgb(89, 74, 226);
+  --mud-appbar-text: rgb(255, 255, 255);
+  --mud-drawer-background: rgb(255, 255, 255);
+  --mud-drawer-text: rgb(66, 66, 66);
+  --mud-drawer-icon: rgb(97, 97, 97);
+  --mud-overlay-dark: rgba(33, 33, 33, 0.5);
+  --mud-overlay-light: rgba(255, 255, 255, 0.5);
+
+  /* Text */
+  --mud-text-primary: rgb(66, 66, 66);
+  --mud-text-secondary: rgba(0, 0, 0, 0.54);
+  --mud-text-disabled: rgba(0, 0, 0, 0.38);
+
+  /* Lines, dividers, skeleton */
+  --mud-divider: rgb(224, 224, 224);
+  --mud-divider-light: rgba(0, 0, 0, 0.08);
+  --mud-lines-default: rgba(0, 0, 0, 0.12);
+  --mud-lines-inputs: rgb(189, 189, 189);
+  --mud-skeleton: rgba(0, 0, 0, 0.11);
+
+  /* Action states */
+  --mud-action-default: rgba(0, 0, 0, 0.54);
+  --mud-action-default-hover: rgba(0, 0, 0, 0.06);
+  --mud-action-disabled: rgba(0, 0, 0, 0.26);
+  --mud-action-disabled-background: rgba(0, 0, 0, 0.12);
+
+  /* Material gray scale — handy for charts, badges, custom UI */
+  --mud-gray-50:  rgb(250, 250, 250);
+  --mud-gray-100: rgb(245, 245, 245);
+  --mud-gray-200: rgb(238, 238, 238);
+  --mud-gray-300: rgb(224, 224, 224);
+  --mud-gray-400: rgb(189, 189, 189);
+  --mud-gray-500: rgb(158, 158, 158);
+  --mud-gray-600: rgb(117, 117, 117);
+  --mud-gray-700: rgb(97, 97, 97);
+  --mud-gray-800: rgb(66, 66, 66);
+  --mud-gray-900: rgb(33, 33, 33);
+
+  /* Typography — Roboto, Material scale */
+  --font-family-sans: "Roboto", "Helvetica", "Arial", sans-serif;
+  --font-family-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* H1–H6 (Material defaults — used as display type) */
+  --font-size-h1: 96px;  --lh-h1: 112px;   --ls-h1: -1.5px;  --fw-h1: 300;
+  --font-size-h2: 60px;  --lh-h2: 72px;    --ls-h2: -0.5px;  --fw-h2: 300;
+  --font-size-h3: 48px;  --lh-h3: 56px;    --ls-h3: 0;       --fw-h3: 400;
+  --font-size-h4: 34px;  --lh-h4: 43px;    --ls-h4: 0.25px;  --fw-h4: 400;
+  --font-size-h5: 24px;  --lh-h5: 32px;    --ls-h5: 0;       --fw-h5: 400;
+  --font-size-h6: 20px;  --lh-h6: 32px;    --ls-h6: 0.15px;  --fw-h6: 500;
+
+  /* Subtitle, body, button, caption, overline */
+  --font-size-subtitle1: 16px; --lh-subtitle1: 28px;  --ls-subtitle1: 0.15px; --fw-subtitle1: 400;
+  --font-size-subtitle2: 14px; --lh-subtitle2: 22px;  --ls-subtitle2: 0.1px;  --fw-subtitle2: 500;
+  --font-size-body1: 16px;     --lh-body1: 24px;      --ls-body1: 0.15px;     --fw-body1: 400;
+  --font-size-body2: 14px;     --lh-body2: 20px;      --ls-body2: 0.15px;     --fw-body2: 400;
+  --font-size-button: 14px;    --lh-button: 24.5px;   --ls-button: 0.4px;     --fw-button: 500;
+  --font-size-caption: 12px;   --lh-caption: 19px;    --ls-caption: 0.4px;    --fw-caption: 400;
+  --font-size-overline: 12px;  --lh-overline: 32px;   --ls-overline: 1px;     --fw-overline: 400;
+  --font-size-input: 16px;     --lh-input: 19px;      --ls-input: 0.15px;
+  --font-size-label: 10px;
+
+  /* Spacing scale (matches MudBlazor padding tokens, 4-px increments) */
+  --space-4xs: 4px;
+  --space-3xs: 6px;
+  --space-2xs: 8px;
+  --space-xs:  10px;
+  --space-sm:  12px;
+  --space-md:  14px;
+  --space-lg:  16px;
+  --space-xl:  20px;
+  --space-2xl: 24px;
+  --space-3xl: 28px;
+  --space-4xl: 32px;
+  --space-5xl: 36px;
+  --space-6xl: 40px;
+  --space-7xl: 44px;
+  --space-8xl: 48px;
+  --space-9xl: 52px;
+  --space-10xl: 56px;
+  --space-12xl: 64px;
+  --space-16xl: 80px;
+
+  /* Radii */
+  --radius-default: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-4xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Border widths */
+  --border-xs: 1px;
+  --border-sm: 2px;
+  --border-md: 3px;
+  --border-lg: 4px;
+  --border-xl: 5px;
+
+  /* Component heights */
+  --h-appbar: 64px;
+  --h-toolbar: 64px;
+  --h-appbar-dense: 48px;
+  --h-button-sm: 31px;
+  --h-button-md: 36px;
+  --h-button-lg: 42px;
+  --h-textfield: 48px;
+  --h-textfield-outlined: 56px;
+  --h-list: 48px;
+  --h-navlink: 40px;
+  --h-tabs-min: 48px;
+  --w-drawer: 240px;
+  --w-drawer-mini: 56px;
+
+  /* Icon sizes */
+  --icon-xs: 12px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 28px;
+  --icon-2xl: 32px;
+  --icon-3xl: 36px;
+  --icon-4xl: 40px;
+
+  /* Material elevations — Mud uses MD elevation 0–24 */
+  --elev-0:  none;
+  --elev-1:  0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  --elev-2:  0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  --elev-3:  0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12);
+  --elev-4:  0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  --elev-6:  0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  --elev-8:  0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+  --elev-12: 0 7px 8px -4px rgba(0,0,0,.2), 0 12px 17px 2px rgba(0,0,0,.14), 0 5px 22px 4px rgba(0,0,0,.12);
+  --elev-16: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);
+  --elev-24: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+
+  /* Motion — MudBlazor inherits MUI ease curves */
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-decelerate: cubic-bezier(0.0, 0, 0.2, 1);
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+  --duration-shortest: 150ms;
+  --duration-shorter: 200ms;
+  --duration-short: 250ms;
+  --duration-standard: 300ms;
+  --duration-complex: 375ms;
+}
+
+/* ---------- Dark theme ---------- */
+:root[data-theme="dark"], .dark {
+  --mud-primary: rgb(119, 107, 231);
+  --mud-primary-lighten: rgb(151, 141, 236);
+  --mud-primary-darken: rgb(90, 75, 226);
+  --mud-primary-text: rgb(255, 255, 255);
+
+  --mud-secondary: rgb(255, 64, 129);
+  --mud-tertiary: rgb(30, 200, 165);
+
+  --mud-info: rgb(50, 153, 255);
+  --mud-info-lighten: rgb(92, 173, 255);
+  --mud-info-darken: rgb(10, 133, 255);
+
+  --mud-success: rgb(11, 186, 131);
+  --mud-warning: rgb(255, 168, 0);
+  --mud-error: rgb(246, 78, 98);
+
+  --mud-black: rgb(39, 39, 47);
+  --mud-surface: rgb(55, 55, 64);
+  --mud-background: rgb(50, 51, 61);
+  --mud-background-gray: rgb(39, 39, 47);
+  --mud-appbar-background: rgb(119, 107, 231);
+  --mud-appbar-text: rgba(255, 255, 255, 0.7);
+  --mud-drawer-background: rgb(39, 39, 47);
+  --mud-drawer-text: rgba(255, 255, 255, 0.5);
+  --mud-drawer-icon: rgba(255, 255, 255, 0.5);
+
+  --mud-text-primary: rgba(255, 255, 255, 0.7);
+  --mud-text-secondary: rgba(255, 255, 255, 0.5);
+  --mud-text-disabled: rgba(255, 255, 255, 0.2);
+
+  --mud-divider: rgba(255, 255, 255, 0.12);
+  --mud-divider-light: rgba(255, 255, 255, 0.06);
+  --mud-lines-default: rgba(255, 255, 255, 0.12);
+  --mud-lines-inputs: rgba(255, 255, 255, 0.3);
+  --mud-skeleton: rgba(255, 255, 255, 0.11);
+
+  --mud-action-default: rgb(173, 173, 177);
+  --mud-action-default-hover: rgba(255, 255, 255, 0.06);
+  --mud-action-disabled: rgba(255, 255, 255, 0.26);
+  --mud-action-disabled-background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Semantic element styles ----------
+   Apply directly with .mud-typo-<name> or to raw elements via
+   a `class="mud-typography"` wrapper. */
+body, .mud-typography {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body1);
+  line-height: var(--lh-body1);
+  letter-spacing: var(--ls-body1);
+  color: var(--mud-text-primary);
+  background: var(--mud-background-gray);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mud-typo-h1, h1.mud {
+  font-size: var(--font-size-h1); line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);   font-weight: var(--fw-h1);
+}
+.mud-typo-h2, h2.mud {
+  font-size: var(--font-size-h2); line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);   font-weight: var(--fw-h2);
+}
+.mud-typo-h3, h3.mud {
+  font-size: var(--font-size-h3); line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);   font-weight: var(--fw-h3);
+}
+.mud-typo-h4, h4.mud {
+  font-size: var(--font-size-h4); line-height: var(--lh-h4);
+  letter-spacing: var(--ls-h4);   font-weight: var(--fw-h4);
+}
+.mud-typo-h5, h5.mud {
+  font-size: var(--font-size-h5); line-height: var(--lh-h5);
+  letter-spacing: var(--ls-h5);   font-weight: var(--fw-h5);
+}
+.mud-typo-h6, h6.mud {
+  font-size: var(--font-size-h6); line-height: var(--lh-h6);
+  letter-spacing: var(--ls-h6);   font-weight: var(--fw-h6);
+}
+.mud-typo-subtitle1 {
+  font-size: var(--font-size-subtitle1); line-height: var(--lh-subtitle1);
+  letter-spacing: var(--ls-subtitle1);   font-weight: var(--fw-subtitle1);
+}
+.mud-typo-subtitle2 {
+  font-size: var(--font-size-subtitle2); line-height: var(--lh-subtitle2);
+  letter-spacing: var(--ls-subtitle2);   font-weight: var(--fw-subtitle2);
+}
+.mud-typo-body1 {
+  font-size: var(--font-size-body1); line-height: var(--lh-body1);
+  letter-spacing: var(--ls-body1);   font-weight: var(--fw-body1);
+}
+.mud-typo-body2 {
+  font-size: var(--font-size-body2); line-height: var(--lh-body2);
+  letter-spacing: var(--ls-body2);   font-weight: var(--fw-body2);
+}
+.mud-typo-button {
+  font-size: var(--font-size-button); line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);   font-weight: var(--fw-button);
+  text-transform: uppercase;
+}
+.mud-typo-caption {
+  font-size: var(--font-size-caption); line-height: var(--lh-caption);
+  letter-spacing: var(--ls-caption);   font-weight: var(--fw-caption);
+  color: var(--mud-text-secondary);
+}
+.mud-typo-overline {
+  font-size: var(--font-size-overline); line-height: var(--lh-overline);
+  letter-spacing: var(--ls-overline);   font-weight: var(--fw-overline);
+  text-transform: uppercase;
+  color: var(--mud-text-secondary);
+}
+.mud-typo-mono { font-family: var(--font-family-mono); }
